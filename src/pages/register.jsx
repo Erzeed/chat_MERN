@@ -8,11 +8,11 @@ function Register () {
                     <h1 className="text-3xl pt-5">Register</h1>
                 </div>
                 <form action="">
-                    <label className="font-light text-md leading-6 text-gray-600 antialiased tracking-wider" htmlFor="username">Username</label>
+                    <label className="font-light text-sm leading-6 text-gray-600 antialiased tracking-wider" htmlFor="username">Username</label>
                     <input className="w-full mt-2 mb-2 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 p-1" type="text" name="email" id="username" />
-                    <label className="font-light text-md leading-6 text-gray-600 antialiased tracking-wider"  htmlFor="email">Email</label>
+                    <label className="font-light text-sm leading-6 text-gray-600 antialiased tracking-wider"  htmlFor="email">Email</label>
                     <input className="w-full mt-2 mb-2 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 p-1"  type="email" name="email" id="email" />
-                    <label className="font-light text-md leading-6 text-gray-600 antialiased tracking-wider"  htmlFor="password">Password</label>
+                    <label className="font-light text-sm leading-6 text-gray-600 antialiased tracking-wider"  htmlFor="password">Password</label>
                     <input className="w-full mt-2 mb-2 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 p-1"  type="password" name="password" id="password" />
                 </form>
                 <div className="btn_form">

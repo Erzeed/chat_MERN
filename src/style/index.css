@@ -12,9 +12,11 @@
     scroll-behavior: smooth;
   }
 
-.register {
+.register,
+.login {
     background: rgb(23,36,44);
     background: linear-gradient(90deg,
         rgba(23,36,44,1) 40%,
-        rgba(58,95,114,1) 100%);
+        rgba(58,95,114,1) 100%
+        );
 }
