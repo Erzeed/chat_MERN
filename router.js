@@ -1,5 +1,6 @@
-const regis = require("./controller/userController")
+const register = require("./controller/userController")
+
 
 module.exports = (app) => {
-    app.use("/register", regis);
+    app.use("/register", register);
 }

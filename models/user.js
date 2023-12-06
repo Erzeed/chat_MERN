@@ -5,9 +5,13 @@ const userSchema = new mongoose.Schema({
         type : String,
         unique: true
     },
+    email: {
+        type : String,
+        unique: true
+    },
     password: {
         type: String
     },
 }, {timestamps: true})
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('User', userSchema)
