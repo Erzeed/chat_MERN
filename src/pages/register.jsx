@@ -1,6 +1,8 @@
 import { useState } from "react";
 import imgRegis from "../assets/img-register.png"
 import { Link } from "react-router-dom";
+import getApi from "../../utils/api";
+
 
 function Register () {
     const [dataRegis, setDataRegis] = useState();
@@ -12,8 +14,14 @@ function Register () {
         })
     }
 
-    const onHandleSubmit = () => {
-        console.log(dataRegis)
+    const onHandleSubmit = async () => {
+        try {
+            const data = await getApi.register(dataRegis)
+            console.log(data)
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
     return(
         <div className="register h-screen w-full flex p-10 items-center">
@@ -29,8 +37,9 @@ function Register () {
                     <label className="font-light text-sm leading-6 text-gray-600 antialiased tracking-wider"  htmlFor="password">Password</label>
                     <input onChange={(e) => onHandleChange(e)} className="w-full mt-2 mb-2 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 p-1"  type="password" name="password" id="password" />
                 </form>
-                <div className="btn_form">
-                    <button onClick={onHandleSubmit} className="bg-[#F06223] w-full h-9 text-sm text-white rounded-full" type="button">Register</button>
+                <div className="btn_form w-full">
+                    <button onClick={onHandleSubmit} className="bg-[#18122B] w-full h-9 text-sm text-white rounded-full hover:text-white hover:shadow-[inset_22rem_0_0_0] hover:shadow-orange-600 duration-[500ms,1000ms] transition-[color,box-shadow]" type="button"
+                    >Register</button>
                 </div>
                 <p className="font-light text-xs tracking-wide" >Have account <Link className="text-sky-400/100" to="/login">Login</Link></p>
             </div>

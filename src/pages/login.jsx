@@ -1,6 +1,7 @@
 import { useState } from "react";
 import imgLogin from "../assets/img-login.png"
 import { Link } from "react-router-dom";
+import getApi from "../../utils/api";
 
 function Login () {
     const [dataLogin, setDataLogin] = useState();
@@ -12,8 +13,13 @@ function Login () {
         })
     }
 
-    const onHandleSubmit = () => {
-        console.log(dataLogin); 
+    const onHandleSubmit = async () => {
+        try {
+            const data = await getApi.register(dataLogin)
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
     }
     return(
         <div className="login h-screen w-full flex p-10 flex-row-reverse items-center">

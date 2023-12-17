@@ -1,10 +1,11 @@
+import BubleChat from "../components/buble-chat";
 import Card from "../components/card";
 
 function Chat () {
     return(
         <div className="container_chat w-full flex h-screen bg-[#2e333d]">
             <div className="chat_log w-1/3 mt-5 border-sky-500 overflow-y-scroll">
-                <div className="log_search p-2">
+                <div className="log_search p-2 sticky top-0">
                     <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -37,8 +38,11 @@ function Chat () {
                         <p>{">"}</p>
                     </div>
                 </div>
-                <div className="main_chat">
-
+                <div className="main_chat h-full bg-gray-800 p-2 flex flex-col justify-end">
+                    <BubleChat />
+                    <div className=" flex flex-col items-end">
+                        <BubleChat answer={true} />
+                    </div>
                 </div>
                 <div className="main_type m-2">
                     <form>
@@ -58,7 +62,7 @@ function Chat () {
                                 </svg>
                                 <span className="sr-only">Add emoji</span>
                             </button>
-                            <textarea id="chat" rows="1" className="block mx-4 p-3 w-full text-sm text-gray-900 bg-gray-800 rounded-lg border border-gray-600 placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Your message..."></textarea>
+                            <textarea id="chat" rows="1" className="block mx-4 p-3 w-full text-sm text-gray-900 bg-gray-800 rounded-lg placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Your message..."></textarea>
                                 <button type="submit" className="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600">
                                 <svg className="w-5 h-5 rotate-90 rtl:-rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                                     <path d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z"/>
