@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import imgLogin from "../assets/img-login.png"
 import { Link } from "react-router-dom";
-import getApi from "../../utils/api";
+import { UserContext } from "../context/userContext.jsx";
+import getApi from "../utils/api";
 
 function Login () {
     const [dataLogin, setDataLogin] = useState();
+    const [loading, setLoading] = useState(false);
+    const {setId} = useContext(UserContext);
 
     const onHandleChange = (e) => {
         setDataLogin({
@@ -14,9 +17,12 @@ function Login () {
     }
 
     const onHandleSubmit = async () => {
+        setLoading(true);
         try {
-            const data = await getApi.register(dataLogin)
-            console.log(data)
+            const data = await getApi.login(dataLogin)
+            console.log(data.id)
+            setId(data.id)
+            setLoading(false);
         } catch (error) {
             console.log(error)
         }
@@ -34,7 +40,11 @@ function Login () {
                     <input className="w-full mt-2 mb-2 rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 p-1" onChange={(e) => onHandleChange(e)}  type="password" name="password" id="password" />
                 </form>
                 <div className="btn_form">
-                    <button onClick={onHandleSubmit} className="bg-[#F06223] w-full h-9 text-sm text-white rounded-full" type="button">Login</button>
+                    <button onClick={onHandleSubmit} className="bg-[#F06223] w-full h-9 text-sm text-white rounded-full" type="button">
+                        {
+                            loading ? "Login..." : "Login"
+                        }
+                    </button>
                 </div>
                 <p className="font-light text-xs tracking-wide" >Don't have account <Link className="text-sky-400/100" to="/register">Register</Link></p>
             </div>

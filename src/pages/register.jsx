@@ -1,11 +1,13 @@
 import { useState } from "react";
 import imgRegis from "../assets/img-register.png"
-import { Link } from "react-router-dom";
-import getApi from "../../utils/api";
+import { Link, useNavigate } from "react-router-dom";
+import getApi from "../utils/api";
 
 
 function Register () {
     const [dataRegis, setDataRegis] = useState();
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const onHandleChange = (e) => {
         setDataRegis({
@@ -15,10 +17,12 @@ function Register () {
     }
 
     const onHandleSubmit = async () => {
+            setLoading(true);
         try {
             const data = await getApi.register(dataRegis)
             console.log(data)
-            
+            setLoading(false);
+            navigate("/");
         } catch (error) {
             console.log(error)
         }
@@ -39,7 +43,9 @@ function Register () {
                 </form>
                 <div className="btn_form w-full">
                     <button onClick={onHandleSubmit} className="bg-[#18122B] w-full h-9 text-sm text-white rounded-full hover:text-white hover:shadow-[inset_22rem_0_0_0] hover:shadow-orange-600 duration-[500ms,1000ms] transition-[color,box-shadow]" type="button"
-                    >Register</button>
+                    >{
+                        loading ? "Register..." : "Register"
+                    }</button>
                 </div>
                 <p className="font-light text-xs tracking-wide" >Have account <Link className="text-sky-400/100" to="/login">Login</Link></p>
             </div>
