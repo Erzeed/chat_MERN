@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 const app = express()
 const dotenv = require("dotenv");
 const router = require("./router");
@@ -19,7 +20,7 @@ mongoose
 
 
 app.use(express.json());
-
+app.use(cookieParser());
 app.use(cors({
     credentials: true,
     origin: "http://localhost:5173"
