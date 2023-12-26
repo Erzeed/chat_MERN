@@ -14,11 +14,11 @@ router.post("/", async (req, res) => {
     if (foundUser) {
         const passOk = bcryptjs.compareSync(password, foundUser.password);
         if (passOk) {
-        jwt.sign({userId:foundUser._id,email}, jwtSecret, {}, (err, token) => {
-            res.cookie('token', token, {sameSite:'none', secure:true}).json({
-            id: foundUser._id,
+            jwt.sign({userId:foundUser._id,email}, jwtSecret, {}, (err, token) => {
+                res.cookie('token', token, {sameSite:'none', secure:true}).json({
+                id: foundUser._id,
+                });
             });
-        });
         }
     }
 })
