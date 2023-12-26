@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { Chat, Login, Register } from "./pages"
-import { UserContext, UserContextProvider } from "./context/userContext"
+import { UserContext } from "./context/userContext"
 import { useContext } from "react"
 
 function App() {
